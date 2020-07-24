@@ -79,7 +79,8 @@ class _DesignListPage extends State<DesignListPage> {
                     "?customer_id=${widget.customerId.toString()}");
           },
           child: Icon(Icons.add),
-        ));
+        ),
+    );
   }
 
   // 没有数据的页面展示

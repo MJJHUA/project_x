@@ -33,8 +33,12 @@ class ConstructionBloc extends Bloc<ConstructionEvent, ConstructionState> {
     try {
       yield ConstructionLoadInProcess();
       final info = await constructionRepository.getConstructionInfo(customerId);
-      if(info["code"] == 200 && info["data"] != null) {
-        Construction construction = Construction.fromJson(info["data"]);
+      if(info["code"] == 200) {
+        Construction construction;
+        if (info["data"] == null)
+          construction = null;
+        else
+          construction= Construction.fromJson(info["data"]);
         yield ConstructionLoadSuccess(construction: construction);
       }
       else {
